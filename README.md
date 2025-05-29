@@ -66,7 +66,7 @@ To re-use this project, kindly refer to the following procedure:
       pip install -r requirements.txt
       ```
 ## **License**
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See `MIT LICENSE` for more information.
 ## **Authors**
 * Richie Mouhouadi - [@LinkedIn](www.linkedin.com/in/richie-mouhouadi) - [@Github](https://github.com/rdmouhouadi/)
 
