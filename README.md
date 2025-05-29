@@ -44,6 +44,8 @@
 
 This is an ML group project completed as part of the mandatory Machine Learning with Python Labs Course at [DSTI](https://dsti.school/).
 
+The data used for the project comes from the [NYS Office of Mental Health Patient Characteristics Survey 2019](https://catalog.data.gov/dataset/patient-characteristics-survey-pcs-2019). The data are organized by OMH Region‐specific (Region of Provider), program type, and by the following demographic characteristics of the clients served during the week of the survey: sex (Male, Female, and Unknown), Transgender (No, Not Transgender; Yes, Transgender and Unknown), age (below 17 (Child), 18 and above(Adult) and unknown age) and race (White only, Black Only, Multi‐racial, Other and Unknown race) and ethnicity (Non‐Hispanic, Hispanic, Client Did Not Answer and Unknown). Persons with Hispanic ethnicity are grouped as “Hispanic,” regardless of race or races reported.
+
 ## **Getting started**
 
 ### **Dependencies**
