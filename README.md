@@ -3,15 +3,15 @@
   <a href="https://github.com/rdmouhouadi/Mental_Health_State_Prediction">
   </a>
 
-<h1 align="center">Mental Health State Prediction</h1>
+<h1 align="center">MHS-Pred</h1>
 
 <p align="center">
-    A Machine Learning project for predicting Mental Health State (mental illness)
+    A Machine Learning based Webapp for predicting Mental Health State (mental illness)
     <br />
     <a href="https://github.com/rdmouhouadi/Mental_Health_Prediction"><strong>Explore the Project Report </strong></a> 
     ·
   <!-- will change the href=... to a link to the demo video-->
-    <a href="https://github.com/rdmouhouadi/Mental_Health_Prediction">View Demo</a>
+    <a href="https://github.com/rdmouhouadi/Mental_Health_Prediction">View the Demo</a>
     <br />
     <br />
     </p>
@@ -34,6 +34,9 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
+    <li><a href="#utilization">Utilization</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contribution">Contribution</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#authors">Authors</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
@@ -67,6 +70,12 @@ To re-use this project, kindly refer to the following procedure:
       ```sh
       pip install -r requirements.txt
       ```
+## **Utilization**
+*This section will be used to indicate how to use the model/web app: the input to enter in the web app or the file to upload. We can also redirect the reader to the Demo video that we'll make.*
+## **Roadmap**
+*Here, we will put what comes next (new features, a deployment in an owned domain, a proper service solution software,...).*
+## **Contribution**
+*We should decide if we invite and/or accept contributions to this project (leave it open source).*
 ## **License**
 Distributed under the MIT License. See `MIT LICENSE` for more information.
 ## **Authors**
@@ -78,3 +87,6 @@ Distributed under the MIT License. See `MIT LICENSE` for more information.
 
 * Arigela Surendra [@LinkedIn](https://www.linkedin.com/in/arigela-surendra-564abb367) - @Github
 ## **Acknowledgements**
+We would like to acknowledge:
+
+* [Catia Silva](https://faculty.eng.ufl.edu/catia-silva/) as we used her README template file to make ours
