@@ -28,7 +28,10 @@
       </ul>
     </li>
     <li>
+      <details open="open">
+        <summary>
       <a href="#getting-started">Getting started</a>
+        </summary>
       <ul>
         <li><a href="#dependencies">Dependencies</a></li>
         <li><a href="#installation">Installation</a></li>
