@@ -72,7 +72,7 @@ Distributed under the MIT License. See `MIT LICENSE` for more information.
 
 * Linh Luong - [@LinkedIn](www.linkedin.com/in/linh-luong-69b651250) - @Github
 
-* Lina Diaz Bejarano - [@LinkedIn](linkedin.com/in/lina-marcela-diaz-bejarano-0b71705a) - @Github
+* Lina Diaz Bejarano - [@LinkedIn](www.linkedin.com/in/lina-marcela-diaz-bejarano-0b71705a) - @Github
 
-* Arigela Surendra [@LinkedIn](linkedin.com/in/arigela-surendra-564abb367) - @Github
+* Arigela Surendra [@LinkedIn](www.linkedin.com/in/arigela-surendra-564abb367) - @Github
 ## **Acknowledgements**
