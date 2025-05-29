@@ -40,6 +40,7 @@
     <li><a href="#license">License</a></li>
     <li><a href="#authors">Authors</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
+    <li><a href="#references">References</a></li>
   </ol>
 </details>
 
@@ -90,3 +91,4 @@ Distributed under the MIT License. See `MIT LICENSE` for more information.
 We would like to acknowledge:
 
 * [Catia Silva](https://faculty.eng.ufl.edu/catia-silva/) as we used her README template file to make ours
+## **References**
