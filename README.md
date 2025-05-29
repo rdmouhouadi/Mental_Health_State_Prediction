@@ -68,11 +68,11 @@ To re-use this project, kindly refer to the following procedure:
 ## **License**
 Distributed under the MIT License. See `LICENSE` for more information.
 ## **Authors**
-* Richie Mouhouadi - [@LinkedIn](www.linkedin.com/in/richie-mouhouadi) - @Email:richie.mouhouadi@edu.dsti.institute
+* Richie Mouhouadi - [@LinkedIn](www.linkedin.com/in/richie-mouhouadi) - [@Github](https://github.com/rdmouhouadi/)
 
-* Linh Luong - [@LinkedIn](www.linkedin.com/in/linh-luong-69b651250) - @Email: linh.luong@edu.dsti.institute
+* Linh Luong - [@LinkedIn](www.linkedin.com/in/linh-luong-69b651250) - @Github
 
-* Lina Diaz Bejarano - [@LinkedIn](linkedin.com/in/lina-marcela-diaz-bejarano-0b71705a) - @Email: lina-marcela.diaz-bejarano@edu.dsti.institute
+* Lina Diaz Bejarano - [@LinkedIn](linkedin.com/in/lina-marcela-diaz-bejarano-0b71705a) - @Github
 
-* Arigela Surendra [@LinkedIn](linkedin.com/in/arigela-surendra-564abb367) - @Email: surendra.arigela@edu.dsti.institute
+* Arigela Surendra [@LinkedIn](linkedin.com/in/arigela-surendra-564abb367) - @Github
 ## **Acknowledgements**
