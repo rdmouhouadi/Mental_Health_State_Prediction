@@ -85,7 +85,7 @@ Distributed under the MIT License. See `MIT LICENSE` for more information.
 ## **Authors**
 * Richie Mouhouadi - [@LinkedIn](https://www.linkedin.com/in/richie-mouhouadi) - [@Github](https://github.com/rdmouhouadi/)
 
-* Linh Luong - [@LinkedIn](https://www.linkedin.com/in/linh-luong-69b651250) - @Github
+* Linh Luong - [@LinkedIn](https://www.linkedin.com/in/linh-luong-69b651250) - [@Github](https://github.com/LinhLuong-2705)
 
 * Lina Diaz Bejarano - [@LinkedIn](https://www.linkedin.com/in/lina-marcela-diaz-bejarano-0b71705a) - @Github
 
