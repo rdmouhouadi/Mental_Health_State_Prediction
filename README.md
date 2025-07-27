@@ -1,9 +1,11 @@
+<!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <a href="https://github.com/rdmouhouadi/Mental_Health_State_Prediction">
+    <img src="images/MHS_logo_1-Photoroom.png" alt="Logo" width="150" height="150">
   </a>
 
-<h1 align="center">MHS-Pred</h1>
+<!--h1 align="center">MHS-Pred</h1-->
 
 <p align="center">
     A Machine Learning based Webapp for predicting Mental Health State (mental illness)
