@@ -1,0 +1,5 @@
+HOME_ROUTE="/"
+ABOUT_US_ROUTE="/about"
+CONTACT_US_ROUTE="/contact"
+CONTACT_ENTRIES_ROUTE="/contact/entries"
+ASSESSMENT_ROUTE = "/assesment"
