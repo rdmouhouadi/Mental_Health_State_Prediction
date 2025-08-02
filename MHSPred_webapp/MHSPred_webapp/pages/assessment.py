@@ -4,17 +4,12 @@ from ..ui.base import base_page
 from ..utils.Stepper_progress_bar import stepper_progress_bar
 
 
-class AssessmentState(rx.State):
-    current_step: int = 1
+class AssessmentFormState(rx.State):
+    form_data: dict = {}
 
     @rx.event
-    def next_step(self):
-        if self.current_step < 5:
-            self.current_step += 1
-    @rx.event
-    def previous_step(self):
-        if self.current_step > 1:
-            self.current_step -= 1
+    def handle_submit(self, form_data: dict):
+        self.form_data = form_data
 
 
 @rx.page(route=navigation.routes.ASSESSMENT_ROUTE)
@@ -30,80 +25,6 @@ def assessment_page() -> rx.Component:
                                         rx.scroll_area(
                                                     rx.card(
                                                                 #rx.heading("Assessment Guidelines", size = "5", align='left'),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
                                                                 rx.text("Guidelines of the survey to be put here: mainly explaination" \
                                                                 "of some features categories.", size = "3"),
                                                                 rx.text("Guidelines of the survey to be put here: mainly explaination" \
@@ -135,26 +56,95 @@ def assessment_page() -> rx.Component:
                             ),
                                 
                             #right part (title + Progress bar + Assessment form)
-                            rx.card( 
-                                    rx.stack(
-                                        rx.heading(" Assessment-Form", size = "5", align='center'),
-                                        rx.box(
+                            rx.box( 
+                                    rx.vstack(
+                                        rx.box(rx.heading(" Assessment-Form", size = "5", align='left')),
+                                
+                                        rx.scroll_area(
+                                                rx.card(
+                                                rx.vstack(
+                                                        #rx.heading("Question 1"),
+                                                        rx.form.root(
+                                                                rx.vstack(
+                                                                    
+                                                                rx.text("Question 1", size="3"),
+                                                                rx.radio_group(
+                                                                        ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+                                                                        name="question1", #Change here to the column name
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
 
-                                            stepper_progress_bar(
-                                                icon1="circle", color1="blue", line1="blue",
-                                                icon2="circle", color2="lightgray", line2="lightgray",
-                                                icon3="circle", color3= "lightgray", line3="lightgray",
-                                                icon4="circle", color4= "lightgray",
-                                                )
-                                             
-                                        ),  
+                                                                rx.text("Question 2", size="3"),
+                                                                rx.radio_group(
+                                                                        ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+                                                                        name="question2",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Question 3", size="3"),
+                                                                rx.radio_group(
+                                                                        ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+                                                                        name="question3",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Question 4", size="3"),
+                                                                rx.radio_group(
+                                                                        ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+                                                                        name="question4", 
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Question 5", size="3"),
+                                                                rx.radio_group(
+                                                                        ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+                                                                        name="question5",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.center(rx.button("Submit", type="submit")),
+                                                                width="100%",
+                                                                spacing="4",
+                                                        
+                                                            ),
+
+                                                        on_submit=AssessmentFormState.handle_submit,
+                                                        reset_on_submit=True,
+
+                                                        #align_items="center",
+                                                        width="80%",
+                                                        spacing="4",
+                                                        ),
+                                                        width="50%",
+                                                ),
                                         
-                                   # rx.text("Question of the survey to be put here: mainly explaination!",
-                                    #    size = "3"),
-                                     #   spacing="2",
+                                            ),
+
+                                        ),
+
+                                        rx.divider(),
+                                        rx.hstack(
+                                                rx.heading("Result:", color_scheme="green"),
+                                                rx.badge(AssessmentFormState.form_data.to_string())
+                                                #rx.cond(
+                                                       # AssessmentFormState.form_data != {},
+                                                        #str(AssessmentFormState.form_data),
+                                                        #"No responses yet."
+                                                        #),
+
+                                        ),
                                         
-                                    #width="100%",
-                                    #height="100%",
+                                   
                                     align='center',
                                     direction='column',                  
                                     size="1",
@@ -167,13 +157,14 @@ def assessment_page() -> rx.Component:
                                 size="1",
                                 variant="ghost", 
                                 border_radius ="2px",                                
-                                width ="100%",
-                                height="75vh",
+                                width ="90%",
+                                height="80vh",
                                 padding="8px"
 
                             ),
                      ),
-             ), 
+                ),
+      
                                       
 
     return base_page(my_child)
