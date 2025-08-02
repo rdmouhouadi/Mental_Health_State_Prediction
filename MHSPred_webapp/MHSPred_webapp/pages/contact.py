@@ -1,3 +1,4 @@
+from typing import List
 import asyncio
 import reflex as rx
 from .. import navigation
@@ -5,15 +6,11 @@ from ..ui.base import base_page
 
 from sqlmodel import select
 
-# Database
-class ContactEntryModel(rx.Model):
-    first_name: str
-    last_name: str
-    email : str
-    message: str
+from .. import db_model
 
 class ContactState(rx.State):
     from_data : dict = {}
+    entries: List['db_model.ContactEntryModel'] = []
     did_submit: bool = False
 
     @rx.var
@@ -24,7 +21,7 @@ class ContactState(rx.State):
     @rx.event
     async def handle_submit(self, form_data: dict):
         '''Handle the form submitted'''
-        print(form_data)
+        #print(form_data)
         self.from_data = form_data
         data = {}
         for k,v in form_data.items():
@@ -32,7 +29,7 @@ class ContactState(rx.State):
                 continue
             data[k] = v
         with rx.session() as session:
-            db_entry = ContactEntryModel(**data)
+            db_entry = db_model.ContactEntryModel(**data)
             session.add(db_entry)
             session.commit()
             self.did_submit = True
@@ -42,6 +39,13 @@ class ContactState(rx.State):
         await asyncio.sleep(2)
         self.did_submit = False
         yield
+
+def list_entries(sef):
+    "allow storing the entries from the contact page in a variable"
+    with rx.session() as session:
+        entries = session.exec( select(db_model.ContactEntryModel)).all()
+        self.entries = entries
+
 
 @rx.page(route=navigation.routes.CONTACT_US_ROUTE)
 def contact_page() -> rx.Component:
