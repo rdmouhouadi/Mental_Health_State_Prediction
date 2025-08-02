@@ -114,4 +114,4 @@ class AssessmentEntryModel(rx.Model, Table = True):
         default_factory=utils.timing.get_utc_now,
         sa_type=sqlalchemy.DateTime(timezone=True),
         sa_column_kwargs={"server_default": sqlalchemy.func.now()},
-        nullable=False
+        nullable=False)
