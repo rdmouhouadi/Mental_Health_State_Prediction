@@ -3,12 +3,14 @@ import reflex as rx
 from .. import navigation
 from ..ui.base import base_page
 
+from sqlmodel import select
+
 # Database
-#class ContactEntryModel(rx.Model):
- #   first_name: str
-  #  last_name: str
-   # email : str
-    #message: str
+class ContactEntryModel(rx.Model):
+    first_name: str
+    last_name: str
+    email : str
+    message: str
 
 class ContactState(rx.State):
     from_data : dict = {}
@@ -24,8 +26,17 @@ class ContactState(rx.State):
         '''Handle the form submitted'''
         print(form_data)
         self.from_data = form_data
-        self.did_submit = True
-        yield
+        data = {}
+        for k,v in form_data.items():
+            if v == "" or v is None:
+                continue
+            data[k] = v
+        with rx.session() as session:
+            db_entry = ContactEntryModel(**data)
+            session.add(db_entry)
+            session.commit()
+            self.did_submit = True
+            yield
         
         #Set timeout
         await asyncio.sleep(2)
