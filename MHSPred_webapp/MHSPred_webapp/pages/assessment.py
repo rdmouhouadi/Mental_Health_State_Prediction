@@ -25,16 +25,11 @@ def assessment_page() -> rx.Component:
                                         rx.scroll_area(
                                                     rx.card(
                                                                 #rx.heading("Assessment Guidelines", size = "5", align='left'),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
-                                                                rx.text("Guidelines of the survey to be put here: mainly explaination" \
-                                                                "of some features categories.", size = "3"),
+                                                                rx.text("1- We assume that the user is a New York state resident", size = "3"),
+                                                                rx.text("2- No question should be left unanswered", size = "3"),
+                                                                rx.text("3- Kindely refer to the video down below for a tutorial", size = "3"),
+                                                                rx.text("", size = "3"),
+                                                                rx.text("NB: The answers given are stored anonymely in a database for futur model improvement", size = "3"),
                                                                     spacing="2",
                                                             
                                                         size="1",
