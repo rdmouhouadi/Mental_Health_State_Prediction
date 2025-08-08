@@ -75,7 +75,7 @@ def assessment_page() -> rx.Component:
                                                                 rx.radio_group(
                                                                         ["DOWNSTATE", "NEW YORK CITY", "UPSTATE"],
                                                                         name="Region Served",
-                                                                        spacing="6",
+                                                                        spacing="9",
                                                                         required=True,
                                                                         direction="row",
                                                                 ),
@@ -102,7 +102,7 @@ def assessment_page() -> rx.Component:
                                                                 rx.radio_group(
                                                                         ["UNKNOWN", "RELIGIOUS", "SPIRITUAL/NON-RELIGIOUS"],
                                                                         name="Religious Preference",
-                                                                        spacing="6",
+                                                                        spacing="9",
                                                                         required=True,
                                                                         direction="row",
                                                                 ),
@@ -120,7 +120,7 @@ def assessment_page() -> rx.Component:
                                                                 rx.radio_group(
                                                                         ["Hispanic", "Majority US", "Unknown", "Immigrant/Other Lang"],
                                                                         name="Cultural group",
-                                                                        spacing="6",
+                                                                        spacing="9",
                                                                         required=True,
                                                                         direction="row",
                                                                 ),
@@ -165,7 +165,7 @@ def assessment_page() -> rx.Component:
                                                                 rx.radio_group(
                                                                         ["NO DISABILITY", "INTELECTUAL/AUTISM/DEVELOP DISABILITY", "UNKNOWN"],
                                                                         name="Mental Disability",
-                                                                        spacing="6",
+                                                                        spacing="9",
                                                                         required=True,
                                                                         direction="row",
                                                                 ),
@@ -332,6 +332,11 @@ def assessment_page() -> rx.Component:
                                                 ),
                                         
                                             ),
+                                            type="hover",
+                                            scrollbars="both",
+                                            style={"height": 180},
+                                            width = "90%",
+                                            height = "80vh"
 
                                         ),
 
