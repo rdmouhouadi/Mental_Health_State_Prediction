@@ -62,50 +62,258 @@ def assessment_page() -> rx.Component:
                                                         rx.form.root(
                                                                 rx.vstack(
                                                                     
-                                                                rx.text("Question 1", size="3"),
+                                                                rx.text("What type of program category best describes the care you receive?", size="3"), #1 
                                                                 rx.radio_group(
-                                                                        ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-                                                                        name="question1", #Change here to the column name
+                                                                        ["OUTPATIENT", "COMMUNITY/SUPPORTIVE", "CRISIS/INPATIENT"],
+                                                                        name="Program Category", #Change here to the column name
                                                                         spacing="6",
                                                                         required=True,
                                                                         direction="row",
                                                                 ),
 
-                                                                rx.text("Question 2", size="3"),
+                                                                rx.text("Which part of the state are you served in?", size="3"), #2
                                                                 rx.radio_group(
-                                                                        ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-                                                                        name="question2",
+                                                                        ["DOWNSTATE", "NEW YORK CITY", "UPSTATE"],
+                                                                        name="Region Served",
                                                                         spacing="6",
                                                                         required=True,
                                                                         direction="row",
                                                                 ),
 
-                                                                rx.text("Question 3", size="3"),
+                                                                rx.text("What's your age group?", size="3"), #3
                                                                 rx.radio_group(
-                                                                        ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-                                                                        name="question3",
+                                                                        ["ADULT", "CHILD", "UNKNOWN"],
+                                                                        name="Age Group",
                                                                         spacing="6",
                                                                         required=True,
                                                                         direction="row",
                                                                 ),
 
-                                                                rx.text("Question 4", size="3"),
+                                                                rx.text("What is your sex?", size="3"), #4
                                                                 rx.radio_group(
-                                                                        ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-                                                                        name="question4", 
+                                                                        ["MALE", "FEMALE", "UNKNOWN"],
+                                                                        name="Sex", 
                                                                         spacing="6",
                                                                         required=True,
                                                                         direction="row",
                                                                 ),
 
-                                                                rx.text("Question 5", size="3"),
+                                                                rx.text("What is your religious preference?", size="3"), # 5
                                                                 rx.radio_group(
-                                                                        ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-                                                                        name="question5",
+                                                                        ["UNKNOWN", "RELIGIOUS", "SPIRITUAL/NON-RELIGIOUS"],
+                                                                        name="Religious Preference",
                                                                         spacing="6",
                                                                         required=True,
                                                                         direction="row",
                                                                 ),
+
+                                                                rx.text("What is your veteran status", size="3"), #6
+                                                                rx.radio_group(
+                                                                        ["NON-VETERAN/UNKNOWN", "VETERAN"],
+                                                                        name="Veteran Status",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Which cultural group do you identify with?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["Hispanic", "Majority US", "Unknown", "Immigrant/Other Lang"],
+                                                                        name="Cultural group",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Do you have a serious mental illness diagnosis?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["NO", "YES","UNKNOWN"],
+                                                                        name="Serious Mental Illness",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Do you smoke?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["NO", "YES","UNKNOWN"],
+                                                                        name="Smokes",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("What is your primary diagnosis status?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["MENTAL ILLNESS", "NOT MI/DEVELOPMENT/ORGANIC/SUBSTANCEADDICTIVE/DISORDER", "NO ADDITIONAL DIAGNOSIS", "UNKNOWN"],
+                                                                        name="Diagnosis",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Do you have any substance use disorder?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["NO DISORDER", "ALCOHOL/DRUG"],
+                                                                        name="Disorder Group",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Do you have a mental disability?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["NO DISABILITY", "INTELECTUAL/AUTISM/DEVELOP DISABILITY", "UNKNOWN"],
+                                                                        name="Mental Disability",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Do you have any physical impairment?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["NO PHYSICAL IMPAIRMENT", "PHYSICAL IMPAIRMENT", "UNKNOWN"],
+                                                                        name="Imparment Group",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Do you have any chronic diseases?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["NO CHRONICAL MEDICAL CONDITION", "CHRONICAL MEDICAL CONDITION"],
+                                                                        name="Chronical diseases",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Do you use cannabis?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["No use cannabis", "Use Cannabis Medical/recreational", "UNKNOWN"],
+                                                                        name="Users Canabis",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Have you received smoking treatment?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["No Received Smoking Medication/counseling", "Received Smoking Medication/counseling", "UNKNOWN"],
+                                                                        name="Smoking treatment",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Do you use services for drug/alcohol/opioid issues?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["NO SERVICE ALCOHOL DRUG USE", "SERVICE ALCOHOL DRUG USE", "UNKNOWN"],
+                                                                        name="Service_drug_alcohol_opiod",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Do you have conditions like high blood pressure, obesity, or hyperlipidemia?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["NO, HYPERLIPIDEMIA/HIGHBLOODPRESSURE/OBESITY", "YES, HYPERLIPIDEMIA/HIGHBLOODPRESSURE/OBESITY", "UNKNOWN"],
+                                                                        name="Other_testchronic_group",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Do you have chronic heart disease?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["NO, HEART CHRONIC ILLNESS", "YES, HEART CHRONIC ILLNESS", "UNKNOWN"],
+                                                                        name="Heartchronic",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Do you have chronic brain-related illness?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["NO, BRAIN CHRONIC ILLNESS", "YES, BRAIN CHRONIC ILLNESS", "UNKNOWN"],
+                                                                        name="Brainchronic",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Do you have other chronic illnesses?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["NO, CHRONIC ILLNESS", "YES, CHRONIC ILLNESS"],
+                                                                        name="Otherchron_group",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("What is your household composition?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["COHABITANTS", "LIVES ALONE", "NOT APPLICABLE/UNKOWN"],
+                                                                        name="Household Composition",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("What is your employment status?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["EMPLOYED", "NOT IN LABOR FORCE", "UNEMPLOYED/UNKNOW"],
+                                                                        name="Emplyement Status",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("What is your cash assistance situation?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["No/Unknown","Receiving Cash Assistance"],
+                                                                        name="Cash Assistance Situation",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Is your insurance coverage status unknown?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["Educated", "Others/Unknown", "Low Educated"],
+                                                                        name="Education Group",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Is your insurance coverage status unknown?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["False", "True"],
+                                                                        name="Unknown Insurance Coverage",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Are you insured?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["YES", "NO"],
+                                                                        name="Insured_or_not",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Do you have public insurance?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["YES", "NO"],
+                                                                        name="Has_Public_Insurance",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
 
                                                                 rx.center(rx.button("Submit", type="submit")),
                                                                 width="100%",
