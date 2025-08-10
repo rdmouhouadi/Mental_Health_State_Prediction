@@ -13,7 +13,7 @@
     <a href="https://github.com/rdmouhouadi/Mental_Health_Prediction"><strong>Explore the Project Report </strong></a> 
     ·
   <!-- will change the href=... to a link to the demo video-->
-    <a href="assets/demo_video.mp4">View the Demo</a>
+    <a href="https://github.com/rdmouhouadi/Mental_Health_State_Prediction/MHSPred_webapp/assets/demo_video.mp4">View the Demo</a>
     <br />
     <br />
     </p>
