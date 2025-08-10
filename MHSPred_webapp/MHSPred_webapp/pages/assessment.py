@@ -2,6 +2,7 @@ import reflex as rx
 from .. import navigation
 from ..ui.base import base_page
 from ..utils.Stepper_progress_bar import stepper_progress_bar
+from ..utils.assessment_processing import prediction
 
 
 class AssessmentFormState(rx.State):
@@ -9,6 +10,7 @@ class AssessmentFormState(rx.State):
 
     @rx.event
     def handle_submit(self, form_data: dict):
+        #print(form_data)
         self.form_data = form_data
 
 
@@ -263,7 +265,7 @@ def assessment_page() -> rx.Component:
                                                                 rx.text("What is your employment status?", size="3"),
                                                                 rx.radio_group(
                                                                         ["EMPLOYED", "NOT IN LABOR FORCE", "UNEMPLOYED/UNKNOW"],
-                                                                        name="Emplyement Status",
+                                                                        name="Employment Status",
                                                                         spacing="6",
                                                                         required=True,
                                                                         direction="row",
