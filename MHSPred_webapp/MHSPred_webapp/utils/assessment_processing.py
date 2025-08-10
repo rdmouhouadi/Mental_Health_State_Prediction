@@ -5,15 +5,17 @@ import sklearn  # Safe import for model deserialization
 
 # Define expected columns
 ENCODED_COLUMNS = [
-    'Veteran Status', 'Chronical diseases', 'Otherchron_group', 
-    'Mental Illness', 'Cash Assistance Situation', 'Unknown Insurance Coverage',
+    'Veteran Status', 'Chronical diseases', 'Otherchron_group',
+    'Cash Assistance Situation', 'Unknown Insurance Coverage',
     'Insured_or_Not', 'Has_Public_Insurance', 'Has_Private_or_Other_Insurance',
     'Confirmed_Medicaid_Managed', 'Program Category_CRISIS/INPATIENT',
     'Program Category_OUTPATIENT', 'Region Served_NEW YORK CITY',
     'Region Served_UPSTATE', 'Age Group_CHILD', 'Age Group_UNKNOWN',
     'Sex_MALE', 'Sex_UNKNOWN', 'Religious Preference_SPIRITUAL/NON-RELIGIOUS',
     'Religious Preference_UNKNOWN', 'Cultural Group_Immigrant/Other Lang',
-    'Cultural Group_Majority US', 'Cultural Group_Unknown', 'Smokes_UNKNOWN',
+    'Cultural Group_Majority US', 'Cultural Group_Unknown',
+    'Serious Mental Illness_UNKNOWN', 'Serious Mental Illness_YES',
+    'Smokes_UNKNOWN',
     'Smokes_YES', 'Diagnosis_NO ADDITIONAL DIAGNOSIS',
     'Diagnosis_NOT MI/DEVELOPMENT/ORGANIC/SUBSTANCEADDICTIVE/DISORDER',
     'Diagnosis_UNKNOWN', 'Disorder Group_NO DISORDER', 'Disorder Group_UNKNOWN',
@@ -42,6 +44,7 @@ ONE_HOT_FIELDS = {
     'Sex': ['Sex_MALE', 'Sex_UNKNOWN'],
     'Religious Preference': ['Religious Preference_SPIRITUAL/NON-RELIGIOUS', 'Religious Preference_UNKNOWN'],
     'Cultural group': ['Cultural Group_Immigrant/Other Lang', 'Cultural Group_Majority US', 'Cultural Group_Unknown'],
+    'Serious Mental Illness': ['Serious Mental Illness_UNKNOWN', 'Serious Mental Illness_YES'],
     'Smokes': ['Smokes_UNKNOWN', 'Smokes_YES'],
     'Diagnosis': ['Diagnosis_NO ADDITIONAL DIAGNOSIS',
                   'Diagnosis_NOT MI/DEVELOPMENT/ORGANIC/SUBSTANCEADDICTIVE/DISORDER',
@@ -63,7 +66,7 @@ ONE_HOT_FIELDS = {
 # Binary fields
 BINARY_FIELDS = [
     'Veteran Status', 'Chronical diseases', 'Otherchron_group',
-    'Mental Illness', 'Cash Assistance Situation',
+    'Cash Assistance Situation',
     'Unknown Insurance Coverage', 'Insured_or_Not',
     'Has_Public_Insurance', 'Has_Private_or_Other_Insurance',
     'Confirmed_Medicaid_Managed'
@@ -78,15 +81,16 @@ def load_model(model_name="MLP_model.pkl"):
 model = load_model()
 
 def encode_input(input_dict):
-    encoded_row = pd.Series(0, index=ENCODED_COLUMNS, dtype='int')
+    #Initialize the row with the correct feature columns (53 features, excluding "Mental Illness")
+    encoded_row = pd.Series(0, index=ENCODED_COLUMNS, dtype='int')  # Ensure 53 columns (no target)
 
-    # Handle binary fields
+    #Handle binary fields (same as before)
     for field in BINARY_FIELDS:
         if field in input_dict:
             value = str(input_dict[field]).strip().upper()
             encoded_row[field] = 1 if value in ['YES', 'TRUE', '1'] else 0
 
-    # Handle one-hot encoded fields
+    # Handle one-hot encoded fields (same as before)
     for field, encoded_options in ONE_HOT_FIELDS.items():
         if field in input_dict:
             input_value = str(input_dict[field]).strip().upper()
@@ -95,11 +99,27 @@ def encode_input(input_dict):
                     encoded_row[option] = 1
                     break
 
-    return pd.DataFrame([encoded_row])
+    # Ensure the correct number of features (53 features)
+    #print("Encoded DataFrame Columns:", encoded_row.index.tolist())  # Ensure 53 columns
+    #print("Encoded DataFrame Shape:", encoded_row.shape)  # Should be (53,)
+
+    #Use .to_numpy() to convert the Series to a NumPy array and reshape it to (1, 53)
+    return encoded_row.to_numpy().reshape(1, -1)  # Convert to NumPy array and reshape to (1, 53)
+
 
 
 def prediction(input_dict):
+    # Ensure that "Mental Illness" is not part of the input
+    input_dict = {key: value for key, value in input_dict.items() if key != 'Mental Illness'}
+
+    # Encode the input data (exclude the target column from form input)
     encoded = encode_input(input_dict)
-    pred = model.predict(encoded.values)[0]
-    result= "NO MENTAL ILLNESS" if pred == 0 else "HAVE A MENTAL ILLNESS"
-    return result
+
+    # Ensure the encoded DataFrame has the correct shape (1 row, 53 features)
+    #print("Encoded DataFrame Shape:", encoded.shape)  # Should be (1, 53)
+
+    # Make the prediction
+    pred = model.predict(encoded)
+
+    # Return the result as a string
+    return "NO MENTAL ILLNESS" if pred == 0 else "HAVE A MENTAL ILLNESS"

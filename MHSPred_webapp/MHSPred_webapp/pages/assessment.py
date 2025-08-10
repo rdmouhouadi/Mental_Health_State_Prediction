@@ -2,16 +2,27 @@ import reflex as rx
 from .. import navigation
 from ..ui.base import base_page
 from ..utils.Stepper_progress_bar import stepper_progress_bar
-from ..utils.assessment_processing import prediction
+from ..utils.assessment_processing import prediction, encode_input
 
 
 class AssessmentFormState(rx.State):
-    form_data: dict = {}
+    form_data: dict = {}  # Store the form data as a dictionary
+    prediction_result: str = ""  # Store the prediction result
 
     @rx.event
     def handle_submit(self, form_data: dict):
-        #print(form_data)
+        # Step 1: Store the form data
         self.form_data = form_data
+        #print(self.form_data)
+
+        # Step 2: Get the prediction result using the form data
+        self.prediction_result = prediction(self.form_data)
+
+        # Step 3: Return None because we don't return the result from here
+        return None  # Reflex expects the event handler to return None
+
+
+
 
 
 @rx.page(route=navigation.routes.ASSESSMENT_ROUTE)
@@ -175,7 +186,7 @@ def assessment_page() -> rx.Component:
                                                                 rx.text("Do you have any physical impairment?", size="3"),
                                                                 rx.radio_group(
                                                                         ["NO PHYSICAL IMPAIRMENT", "PHYSICAL IMPAIRMENT", "UNKNOWN"],
-                                                                        name="Imparment Group",
+                                                                        name="Impairment Group",
                                                                         spacing="6",
                                                                         required=True,
                                                                         direction="row",
@@ -301,7 +312,7 @@ def assessment_page() -> rx.Component:
                                                                 rx.text("Are you insured?", size="3"),
                                                                 rx.radio_group(
                                                                         ["YES", "NO"],
-                                                                        name="Insured_or_not",
+                                                                        name="Insured_or_Not",
                                                                         spacing="6",
                                                                         required=True,
                                                                         direction="row",
@@ -316,6 +327,23 @@ def assessment_page() -> rx.Component:
                                                                         direction="row",
                                                                 ),
 
+                                                                rx.text("Do you have a private or other insurance?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["YES", "NO"],
+                                                                        name="Has_Private_or_Other_Insurance",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
+
+                                                                rx.text("Are you in the medicaid program?", size="3"),
+                                                                rx.radio_group(
+                                                                        ["YES", "NO"],
+                                                                        name="Confirmed_Medicaid_Managed",
+                                                                        spacing="6",
+                                                                        required=True,
+                                                                        direction="row",
+                                                                ),
 
                                                                 rx.center(rx.button("Submit", type="submit")),
                                                                 width="100%",
@@ -345,7 +373,9 @@ def assessment_page() -> rx.Component:
                                         rx.divider(),
                                         rx.hstack(
                                                 rx.heading("Result:", color_scheme="green"),
-                                                rx.badge(AssessmentFormState.form_data.to_string())
+                                                #rx.badge(AssessmentFormState.form_data.to_string())
+                                                #rx.badge(AssessmentFormState.prediction_result)
+                                                rx.center(rx.badge(AssessmentFormState.prediction_result))
                                                 #rx.cond(
                                                        # AssessmentFormState.form_data != {},
                                                         #str(AssessmentFormState.form_data),
