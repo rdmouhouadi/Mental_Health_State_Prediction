@@ -1,25 +1,39 @@
+import asyncio
+from typing import List
 import reflex as rx
 from .. import navigation
 from ..ui.base import base_page
-from ..utils.Stepper_progress_bar import stepper_progress_bar
-from ..utils.assessment_processing import prediction, encode_input
+from ..utils.assessment_processing import prediction
 
 
 class AssessmentFormState(rx.State):
     form_data: dict = {}  # Store the form data as a dictionary
     prediction_result: str = ""  # Store the prediction result
+    did_submit: bool = False  # Track if the form was submitted
 
     @rx.event
-    def handle_submit(self, form_data: dict):
-        # Step 1: Store the form data
+    async def handle_submit(self, form_data: dict):
+        '''Handle assessment form submission'''
+        # Store the form data
         self.form_data = form_data
         #print(self.form_data)
 
-        # Step 2: Get the prediction result using the form data
+        # Step 1: Get the prediction result using the form data
         self.prediction_result = prediction(self.form_data)
 
-        # Step 3: Return None because we don't return the result from here
-        return None  # Reflex expects the event handler to return None
+        # Step 2: Check submition status
+        self.did_submit = True
+        yield
+
+        # Timeout to reset the "did_submit" flag and clear the result
+        await asyncio.sleep(5)
+        self.did_submit = False
+        self.prediction_result = ""  # Reset the prediction result
+        yield
+
+        # Manually reset the form_data to trigger a reset of the form fields
+        #self.form_data = {}  # This will reset the form fields
+        #yield
 
 
 
@@ -366,21 +380,23 @@ def assessment_page() -> rx.Component:
                                             scrollbars="both",
                                             style={"height": 180},
                                             width = "90%",
-                                            height = "80vh"
+                                            height = "75vh"
 
                                         ),
 
                                         rx.divider(),
                                         rx.hstack(
                                                 rx.heading("Result:", color_scheme="green"),
-                                                #rx.badge(AssessmentFormState.form_data.to_string())
-                                                #rx.badge(AssessmentFormState.prediction_result)
-                                                rx.center(rx.badge(AssessmentFormState.prediction_result))
+                                                #rx.center(rx.badge(AssessmentFormState.prediction_result))
                                                 #rx.cond(
                                                        # AssessmentFormState.form_data != {},
                                                         #str(AssessmentFormState.form_data),
                                                         #"No responses yet."
                                                         #),
+                                                # Show the prediction result after form submission
+                                                rx.cond(AssessmentFormState.prediction_result != "", 
+                                                        rx.badge(AssessmentFormState.prediction_result), ""),
+
 
                                         ),
                                         
